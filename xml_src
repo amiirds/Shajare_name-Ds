@@ -1,0 +1,118 @@
+
+        ADD
+
+<!--
+                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField />
+                                    <Label text="ID" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin></HBox>
+                               <HBox spacing="10.0">
+                                 <children>
+                                    <TextField />
+                                    <Label text="نام" />
+                                 </children></HBox>
+                               <HBox spacing="10.0">
+                                 <children>
+                                    <TextField />
+                                    <Label text="نام خانوادگی" />
+                                 </children></HBox>
+                               <HBox spacing="10.0">
+                                 <children>
+                                    <TextField />
+                                    <Label text="تاریخ تولد" />
+                                 </children></HBox>
+                               <HBox spacing="10.0">
+                                 <children>
+                                    <TextField />
+                                    <Label text="تاریخ وفات" />
+                                 </children></HBox>
+                               <HBox spacing="10.0">
+                                   <children>
+                                       <TextField />
+                                       <Label text="ID پدر" />
+                                   </children></HBox>
+                               <HBox spacing="10.0">
+                                   <children>
+                                       <TextField />
+                                       <Label text="ID مادر" />
+                                   </children></HBox>
+                               <HBox spacing="10.0">
+                                   <children>
+                                       <TextField />
+                                       <Label text="ID همسر(ان)" />
+                                   </children></HBox>
+                               <HBox alignment="CENTER" spacing="25.0">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" text="زن" />
+                                    <RadioButton mnemonicParsing="false" text="مرد" />
+                                     <Button mnemonicParsing="false" text="ذخیره">
+                                       <HBox.margin>
+                                          <Insets left="85.0" />
+                                       </HBox.margin></Button>
+                                 </children></HBox>
+                           </children>
+                        </VBox>
+
+-->
+
+        search
+
+ <!--
+  <HBox layoutX="85.0" layoutY="95.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                                <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="10.0">
+                                 <children>
+                                    <TextField minHeight="-Infinity" minWidth="-Infinity" />
+                                    <RadioButton mnemonicParsing="false" text="جستجو با ID" />
+                                    <TextField />
+                                    <RadioButton mnemonicParsing="false" text="جستجو با نام" />
+                                    <Button mnemonicParsing="false" text="جستجو">
+                                       <VBox.margin>
+                                          <Insets top="45.0" />
+                                       </VBox.margin></Button>
+                                 </children></VBox>
+                                    <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0">
+                                       <children>
+                                           <RadioButton mnemonicParsing="false" text="پدر" />
+                                           <RadioButton mnemonicParsing="false" text="مادر" />
+                                           <RadioButton mnemonicParsing="false" text="برادر" />
+                                           <RadioButton mnemonicParsing="false" text="خواهر" />
+                                           <RadioButton mnemonicParsing="false" text="پسر" />
+                                           <RadioButton mnemonicParsing="false" text="دختر" />
+                                           <RadioButton mnemonicParsing="false" text="زن" />
+                                           <RadioButton mnemonicParsing="false" text="شوهر" />
+                                           <RadioButton mnemonicParsing="false" text="دایی" />
+                                           <RadioButton mnemonicParsing="false" text="خاله" />
+                                           <RadioButton mnemonicParsing="false" text="عمو" />
+                                           <RadioButton mnemonicParsing="false" text="عمه" />
+                                           <RadioButton mnemonicParsing="false" text="باجناق" />
+                                           <RadioButton mnemonicParsing="false" text="جاری" />
+                                           <RadioButton mnemonicParsing="false" text="هوو" />
+                                       </children>
+                                    </VBox>
+                           </children>
+                        </HBox>
+ -->
+
+        Resulted
+
+<!--
+                        <TextArea prefHeight="380.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+-->
+
+
+
+
+<!--
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <center>
+                              <Label text="لطفا صبر نمایید..." BorderPane.alignment="CENTER" />
+                           </center></BorderPane>
+-->
