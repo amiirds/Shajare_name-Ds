@@ -126,7 +126,7 @@ public class Person {
         if (type == PersonType.FEMALE){
             child.ratio.daye.addAll(ratio.brothers);
             child.ratio.khale.addAll(ratio.sisters);
-            for (int x : ratio.sun) {
+            for (int x : ratio.son) {
                 if(! child.ratio.brothers.contains(x)) child.ratio.brothers.add(x);
             }
             for (int x : ratio.daughter) {
@@ -137,14 +137,15 @@ public class Person {
             child.ratio.amou.addAll(ratio.brothers);
             child.ratio.amme.addAll(ratio.sisters);
             child.ratio.sisters.addAll(ratio.daughter);
-            child.ratio.brothers.addAll(ratio.sun);
+            child.ratio.brothers.addAll(ratio.son);
         }
 
-        if(child.type == PersonType.FEMALE) ratio.daughter.add(child.ID);
-        else ratio.sun.add(child.ID);
-
-        for (int x : ratio.sun) CounterPerson.findPersonByID(x).getRatioFromOtherChild(child);
+        for (int x : ratio.son) CounterPerson.findPersonByID(x).getRatioFromOtherChild(child);
         for (int x : ratio.daughter) CounterPerson.findPersonByID(x).getRatioFromOtherChild(child);
+        
+        if(child.type == PersonType.FEMALE) ratio.daughter.add(child.ID);
+        else ratio.son.add(child.ID);
+        
 
     }
     public void getRatioFromPartner(Person partner){
@@ -213,19 +214,19 @@ public class Person {
         if (otherChild.type == PersonType.FEMALE){
             if (!ratio.sisters.contains(otherChild.ID)) ratio.sisters.add(otherChild.ID);
             if (type == PersonType.FEMALE){
-                for (int c : ratio.sun) CounterPerson.findPersonByID(c).ratio.khale.add(otherChild.ID);
+                for (int c : ratio.son) CounterPerson.findPersonByID(c).ratio.khale.add(otherChild.ID);
                 for (int c : ratio.daughter) CounterPerson.findPersonByID(c).ratio.khale.add(otherChild.ID);
             } else {
-                for (int c : ratio.sun) CounterPerson.findPersonByID(c).ratio.amme.add(otherChild.ID);
+                for (int c : ratio.son) CounterPerson.findPersonByID(c).ratio.amme.add(otherChild.ID);
                 for (int c : ratio.daughter) CounterPerson.findPersonByID(c).ratio.amme.add(otherChild.ID);
             }
         } else {
             if (!ratio.brothers.contains(otherChild.ID)) ratio.brothers.add(otherChild.ID);
             if (type == PersonType.FEMALE){
-                for (int c : ratio.sun) CounterPerson.findPersonByID(c).ratio.daye.add(otherChild.ID);
+                for (int c : ratio.son) CounterPerson.findPersonByID(c).ratio.daye.add(otherChild.ID);
                 for (int c : ratio.daughter) CounterPerson.findPersonByID(c).ratio.daye.add(otherChild.ID);
             } else {
-                for (int c : ratio.sun) CounterPerson.findPersonByID(c).ratio.amou.add(otherChild.ID);
+                for (int c : ratio.son) CounterPerson.findPersonByID(c).ratio.amou.add(otherChild.ID);
                 for (int c : ratio.daughter) CounterPerson.findPersonByID(c).ratio.amou.add(otherChild.ID);
             }
         }

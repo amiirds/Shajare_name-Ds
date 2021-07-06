@@ -187,7 +187,7 @@ public class CounterPerson {
             }
         }
         for (int x : person1.getRatio().amou){
-            for (int p1 : findPersonByID(x).getRatio().sun){ //ignored...
+            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
                 if (person2.getID() == p1){
                     if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S12;
                     else return PersonRatio.S3 + PersonRatio.S12;
@@ -195,7 +195,7 @@ public class CounterPerson {
             }
         }
         for (int x : person1.getRatio().amme){
-            for (int p1 : findPersonByID(x).getRatio().sun){ //ignored...
+            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
                 if (person2.getID() == p1) {
                     if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S13;
                     else return PersonRatio.S3 + PersonRatio.S13;
@@ -203,7 +203,7 @@ public class CounterPerson {
             }
         }
         for (int x : person1.getRatio().khale){
-            for (int p1 : findPersonByID(x).getRatio().sun){ //ignored...
+            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
                 if (person2.getID() == p1) {
                     if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S11;
                     else return PersonRatio.S3 + PersonRatio.S11;
@@ -211,21 +211,21 @@ public class CounterPerson {
             }
         }
         for (int x : person1.getRatio().daye){
-            for (int p1 : findPersonByID(x).getRatio().sun){ //ignored...
+            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
                 if (person2.getID() == p1) {
                     if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S10;
                     else return PersonRatio.S3 + PersonRatio.S10;
                 }
             }
         }
-        for (int x : person2.getRatio().sun){
+        for (int x : person2.getRatio().son){
             if (person1.getID() == x) return PersonRatio.S9;
         }
         for (int x : person2.getRatio().daughter){
             if (person1.getID() == x) return PersonRatio.S9;
         }
         if (momP1 != null){
-            for (int x : momP1.getRatio().sun){
+            for (int x : momP1.getRatio().son){
                 if (person2.getID() == x) return PersonRatio.S9;
             }
             for (int x : momP1.getRatio().daughter){
@@ -286,7 +286,7 @@ public class CounterPerson {
                 result.append(findPersonByID(id).toString());
         }
         else if (type == RatioType.PESAR){
-            for (int id : person.getRatio().sun)
+            for (int id : person.getRatio().son)
                 result.append(findPersonByID(id).toString());
         }
         else if (type == RatioType.DOKHTAR){
@@ -370,10 +370,10 @@ public class CounterPerson {
 
     private static int babyCount(Person person){
         int result = 0;
-        result += person.getRatio().sun.size();
+        result += person.getRatio().son.size();
         result += person.getRatio().daughter.size();
 
-        for (int id : person.getRatio().sun)
+        for (int id : person.getRatio().son)
             result += babyCount(findPersonByID(id));
         for (int id : person.getRatio().daughter)
             result += babyCount(findPersonByID(id));
@@ -384,7 +384,7 @@ public class CounterPerson {
     private static boolean isLastChild(Person child, Person dad){
         boolean result = false;
 
-        for (int x : dad.getRatio().sun){
+        for (int x : dad.getRatio().son){
             if (child.getID() == x) return true;
             else result = isLastChild(child, findPersonByID(x));
             if (result) return true;

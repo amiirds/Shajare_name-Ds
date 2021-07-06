@@ -29,7 +29,7 @@ public class PersonRatio {
     public final ArrayList<Integer> brothers = new ArrayList<>();
     public final ArrayList<Integer> sisters = new ArrayList<>();
     public final ArrayList<Integer> daughter = new ArrayList<>();
-    public final ArrayList<Integer> sun = new ArrayList<>();
+    public final ArrayList<Integer> son = new ArrayList<>();
     public final ArrayList<Integer> daye = new ArrayList<>();
     public final ArrayList<Integer> khale = new ArrayList<>();
     public final ArrayList<Integer> amou = new ArrayList<>();
