@@ -8,23 +8,25 @@ import java.util.*;
 public class CounterPerson {
     private static final ArrayList<Person> list = new ArrayList<>();
 
-     /*  //TESTING VALUES for me ...
-    static {
-        list.add(new Person(50, "محمد", "عزتی", PersonType.MALE, "0", 0, 0));
-        list.add(new Person(51, "مریم", "عزتی", PersonType.FEMALE, "0", 0, 0, 50));
-        list.add(new Person(52, "صادق", "عزتی", PersonType.MALE, "0", 50, 51));
-        list.add(new Person(53, "مسعود", "عزتی", PersonType.MALE, "0", 50, 51));
-        list.add(new Person(54, "کیمیا", "عزتی", PersonType.FEMALE, "0", 50, 51));
-        list.add(new Person(55, "فرزانه", "عزتی", PersonType.FEMALE, "0", 50, 51));
-        list.add(new Person(56, "داوود", "عزتی", PersonType.MALE, "0", 0, 0, 55));
-        list.add(new Person(57, "علی", "عزتی", PersonType.MALE, "0", 0, 0, 54));
-        list.add(new Person(58, "مهسا", "عزتی", PersonType.FEMALE, "0", 0, 0, 52));
-        list.add(new Person(59, "مهین", "عزتی", PersonType.FEMALE, "0", 0, 0, 53));
-        list.add(new Person(60, "تقی", "عزتی", PersonType.MALE, "0", 53, 59));
-        list.add(new Person(61, "رضا", "عزتی", PersonType.MALE, "0", 52, 58));
-        list.add(new Person(62, "محمود", "عزتی", PersonType.MALE, "0", 57, 54));
-        list.add(new Person(63, "وحید", "عزتی", PersonType.MALE, "0", 56, 55));
-    } */
+    //TESTING VALUES...
+    /** static {
+     new Person(50, "محمد", "عزتی", PersonType.MALE, "0", 0, 0);
+     new Person(51, "مریم", "عزتی", PersonType.FEMALE, "0", 0, 0, 50);
+     new Person(52, "صادق", "عزتی", PersonType.MALE, "0", 50, 51);
+     new Person(53, "مسعود", "عزتی", PersonType.MALE, "0", 50, 51);
+     new Person(54, "کیمیا", "عزتی", PersonType.FEMALE, "0", 50, 51);
+     new Person(55, "فرزانه", "عزتی", PersonType.FEMALE, "0", 50, 51);
+     new Person(56, "داوود", "عزتی", PersonType.MALE, "0", 0, 0, 55);
+     new Person(57, "علی", "عزتی", PersonType.MALE, "0", 0, 0, 54);
+     new Person(58, "مهسا", "عزتی", PersonType.FEMALE, "0", 0, 0, 52);
+     new Person(59, "مهین", "عزتی", PersonType.FEMALE, "0", 0, 0, 53);
+     new Person(60, "تقی", "عزتی", PersonType.MALE, "0", 53, 59);
+     new Person(61, "رضا", "عزتی", PersonType.MALE, "0", 52, 58);
+     new Person(62, "محمود", "عزتی", PersonType.MALE, "0", 57, 54);
+     new Person(63, "وحید", "عزتی", PersonType.MALE, "0", 56, 55);
+     }
+     */
+
 
     public static ObservableList<Person> getObservableList(){ return FXCollections.observableList(list); }
 
@@ -46,18 +48,18 @@ public class CounterPerson {
         return result;
     }
 
+    /*****************************
+     *      getRatio Method      *
+     *****************************/
 
     public static String getRatio(int ID1, int ID2){ return getRatio(ID1, ID2, true); }
 
     public static String getRatio(int ID1, int ID2, boolean bool) {
         Person person1 = findPersonByID(ID1);
         Person person2 = findPersonByID(ID2);
-        Person momP1;
-        try { momP1 =  findPersonByID(person1.getMomID()); }
-        catch (Exception e) { momP1 = null; }
-
 
         if(person1.getID() == person2.getID()) return "خودش";
+
         if (person1.getDadID() == person2.getID() || person1.getMomID() == person2.getID()){
             if (person2.getType() == PersonType.FEMALE) return PersonRatio.S2;
             else return PersonRatio.S1;
@@ -108,13 +110,13 @@ public class CounterPerson {
             }catch (Exception ignored) {}
         }
         for (int x : person1.getRatio().sisters){
-            if (findPersonByID(x) == person2) //ignored
+            if (findPersonByID(x) == person2)
                 if ((person2.getMomID() == person1 .getMomID()) && (person1.getDadID() == person2.getDadID()))
                     return PersonRatio.S7;
                 else return PersonRatio.S7 + PersonRatio.SPlus2;
         }
         for (int x : person1.getRatio().brothers){
-            if (findPersonByID(x) == person2) //ignored
+            if (findPersonByID(x) == person2)
                 if ((person2.getMomID() == person1 .getMomID()) && (person1.getDadID() == person2.getDadID()))
                     return PersonRatio.S8;
                 else return PersonRatio.S8 + PersonRatio.SPlus2;
@@ -153,12 +155,18 @@ public class CounterPerson {
         }
         for (int x : person2.getRatio().sisters){
             for (int xx : findPersonByID(x).getPartnerID()){
-                if (person1.getID() == xx) return PersonRatio.S8 + PersonRatio.S5;
+                if (person1.getID() == xx) {
+                    if(person2.getType() == PersonType.FEMALE) return PersonRatio.S7 + PersonRatio.S5;
+                    else return PersonRatio.S8 + PersonRatio.S5;
+                }
             }
         }
         for (int x : person2.getRatio().brothers){
             for (int xx : findPersonByID(x).getPartnerID()){
-                if (person1.getID() == xx) return PersonRatio.S7 + PersonRatio.S6;
+                if (person1.getID() == xx) {
+                    if (person2.getType() == PersonType.FEMALE) return PersonRatio.S7 + PersonRatio.S6;
+                    else return PersonRatio.S8 + PersonRatio.S6;
+                }
             }
         }
         //
@@ -187,59 +195,49 @@ public class CounterPerson {
             }
         }
         for (int x : person1.getRatio().amou){
-            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
-                if (person2.getID() == p1){
-                    if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S12;
-                    else return PersonRatio.S3 + PersonRatio.S12;
-                }
+            for (int p1 : findPersonByID(x).getRatio().son){
+                if (person2.getID() == p1) return PersonRatio.S4 + PersonRatio.S12;
+            }
+            for (int p1 : findPersonByID(x).getRatio().daughter){
+                if (person2.getID() == p1) return PersonRatio.S3 + PersonRatio.S12;
             }
         }
         for (int x : person1.getRatio().amme){
-            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
-                if (person2.getID() == p1) {
-                    if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S13;
-                    else return PersonRatio.S3 + PersonRatio.S13;
-                }
+            for (int p1 : findPersonByID(x).getRatio().son){
+                if (person2.getID() == p1) return PersonRatio.S4 + PersonRatio.S13;
+            }
+            for (int p1 : findPersonByID(x).getRatio().daughter){
+                if (person2.getID() == p1) return PersonRatio.S3 + PersonRatio.S13;
             }
         }
         for (int x : person1.getRatio().khale){
-            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
-                if (person2.getID() == p1) {
-                    if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S11;
-                    else return PersonRatio.S3 + PersonRatio.S11;
-                }
+            for (int p1 : findPersonByID(x).getRatio().son){
+                if (person2.getID() == p1) return PersonRatio.S4 + PersonRatio.S11;
+            }
+            for (int p1 : findPersonByID(x).getRatio().daughter){
+                if (person2.getID() == p1) return PersonRatio.S3 + PersonRatio.S11;
             }
         }
         for (int x : person1.getRatio().daye){
-            for (int p1 : findPersonByID(x).getRatio().son){ //ignored...
-                if (person2.getID() == p1) {
-                    if (person2.getType() == PersonType.MALE) return PersonRatio.S4 + PersonRatio.S10;
-                    else return PersonRatio.S3 + PersonRatio.S10;
-                }
+            for (int p1 : findPersonByID(x).getRatio().son){
+                if (person2.getID() == p1) return PersonRatio.S4 + PersonRatio.S10;
+            }
+            for (int p1 : findPersonByID(x).getRatio().daughter){
+                if (person2.getID() == p1) return PersonRatio.S3 + PersonRatio.S10;
             }
         }
-        for (int x : person2.getRatio().son){
-            if (person1.getID() == x) return PersonRatio.S9;
-        }
-        for (int x : person2.getRatio().daughter){
-            if (person1.getID() == x) return PersonRatio.S9;
-        }
-        if (momP1 != null){
-            for (int x : momP1.getRatio().son){
-                if (person2.getID() == x) return PersonRatio.S9;
-            }
-            for (int x : momP1.getRatio().daughter){
-                if (person2.getID() == x) return PersonRatio.S9;
-            }
-        }
+
         if (isLastChild(person2, person1)) return PersonRatio.S9;
         if (isLastChild(person1, person2))
             return (person2.getType() == PersonType.MALE ? PersonRatio.S1 : PersonRatio.S2) + PersonRatio.SPlus1;
-        
+
 
         return PersonRatio.S0;
     }
 
+    /*************************************
+     *      getPersonsXRatio Method      *
+     *************************************/
 
     public static StringBuilder getPersonsXRatio(int ID, RatioType type){
         return getPersonsXRatio(findPersonByID(ID), type);
@@ -331,6 +329,9 @@ public class CounterPerson {
         return result;
     }
 
+    /**************************************
+     *      nonRatioPartners Method       *
+     **************************************/
 
     public static StringBuilder nonRatioPartners(){
         StringBuilder result = new StringBuilder("");
@@ -351,6 +352,10 @@ public class CounterPerson {
 
         return result;
     }
+
+    /******************************************
+     *      getBigBabiesOfParent Method       *
+     ******************************************/
 
     public static Person getBigBabiesOfParent() {
         HashMap<Person, Integer> map = new HashMap<>();

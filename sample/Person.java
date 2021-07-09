@@ -45,10 +45,10 @@ public class Person {
             dad.getRatioFromChild(this);
         }catch (Exception ignored){}
 
-         try {
-             Person mom = CounterPerson.findPersonByID(momID);
-             mom.getRatioFromChild(this);
-         }catch (Exception ignored){}
+        try {
+            Person mom = CounterPerson.findPersonByID(momID);
+            mom.getRatioFromChild(this);
+        }catch (Exception ignored){}
 
         for (int id : this.partnerID) {
             try {
@@ -142,10 +142,9 @@ public class Person {
 
         for (int x : ratio.son) CounterPerson.findPersonByID(x).getRatioFromOtherChild(child);
         for (int x : ratio.daughter) CounterPerson.findPersonByID(x).getRatioFromOtherChild(child);
-        
+
         if(child.type == PersonType.FEMALE) ratio.daughter.add(child.ID);
         else ratio.son.add(child.ID);
-        
 
     }
     public void getRatioFromPartner(Person partner){
@@ -159,26 +158,24 @@ public class Person {
                     if (x != ID) ratio.hawo.add(hav.ID);
                 } catch (Exception ignored) { }
             }
-           for (int x : partner.ratio.brothers) {
-               try {
-                   for (int xx : CounterPerson.findPersonByID(x).partnerID){
-                       try {
-                           Person jar = CounterPerson.findPersonByID(xx);
-                           ratio.jary.add(xx);
-                           jar.ratio.jary.add(ID);
-                       } catch (Exception ignored) { }
-                   }
-               } catch (Exception ignored) { }
-           }
-           for (int x : ratio.sisters){
-               try {
-                   for (int xx : CounterPerson.findPersonByID(x).partnerID){
-                       Person baj = CounterPerson.findPersonByID(xx);
-                       partner.ratio.bajenagh.add(xx);
-                       baj.ratio.bajenagh.add(partner.ID);
-                   }
-               } catch (Exception ignored) { }
-           }
+            for (int x : partner.ratio.brothers) {
+                for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                    try {
+                        Person jar = CounterPerson.findPersonByID(xx);
+                        ratio.jary.add(xx);
+                        jar.ratio.jary.add(ID);
+                    } catch (Exception ignored) { }
+                }
+            }
+            for (int x : ratio.sisters){
+                for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                    try {
+                        Person baj = CounterPerson.findPersonByID(xx);
+                        partner.ratio.bajenagh.add(xx);
+                        baj.ratio.bajenagh.add(partner.ID);
+                    }catch (Exception ignored) { }
+                }
+            }
 
         } else {
             for (int x : partnerID){
@@ -189,22 +186,22 @@ public class Person {
                 } catch (Exception ignored) { }
             }
             for (int x : partner.ratio.sisters) {
-                try {
-                    for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                    try {
                         Person baj = CounterPerson.findPersonByID(xx);
                         ratio.bajenagh.add(xx);
                         baj.ratio.bajenagh.add(ID);
-                    }
-                } catch (Exception ignored) { }
+                    } catch (Exception ignored) { }
+                }
             }
             for (int x : ratio.brothers){
-                try {
-                    for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                for (int xx : CounterPerson.findPersonByID(x).partnerID){
+                    try {
                         Person jar = CounterPerson.findPersonByID(xx);
                         partner.ratio.jary.add(xx);
                         jar.ratio.jary.add(partner.ID);
-                    }
-                } catch (Exception ignored) { }
+                    } catch (Exception ignored) { }
+                }
             }
         }
 
