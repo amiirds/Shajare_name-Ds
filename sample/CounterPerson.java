@@ -48,10 +48,6 @@ public class CounterPerson {
         return result;
     }
 
-    /*****************************
-     *      getRatio Method      *
-     *****************************/
-
     public static String getRatio(int ID1, int ID2){ return getRatio(ID1, ID2, true); }
 
     public static String getRatio(int ID1, int ID2, boolean bool) {
@@ -235,10 +231,6 @@ public class CounterPerson {
         return PersonRatio.S0;
     }
 
-    /*************************************
-     *      getPersonsXRatio Method      *
-     *************************************/
-
     public static StringBuilder getPersonsXRatio(int ID, RatioType type){
         return getPersonsXRatio(findPersonByID(ID), type);
     }
@@ -329,10 +321,6 @@ public class CounterPerson {
         return result;
     }
 
-    /**************************************
-     *      nonRatioPartners Method       *
-     **************************************/
-
     public static StringBuilder nonRatioPartners(){
         StringBuilder result = new StringBuilder("");
         ArrayList<Person> list2 = new ArrayList<>(list);
@@ -352,10 +340,6 @@ public class CounterPerson {
 
         return result;
     }
-
-    /******************************************
-     *      getBigBabiesOfParent Method       *
-     ******************************************/
 
     public static Person getBigBabiesOfParent() {
         HashMap<Person, Integer> map = new HashMap<>();
